@@ -8,24 +8,28 @@ class Button extends StatelessWidget {
   final String text;
   final bool big;
   final Color color;
+  final void Function(String) cb;
 
-  const Button({
+  Button({
     super.key,
     required this.text,
     this.big = false,
     this.color = defaultColor,
+    required this.cb,
   });
-  const Button.big({
+  Button.big({
     super.key,
     required this.text,
     this.big = true,
     this.color = defaultColor,
+    required this.cb,
   });
-  const Button.operation({
+  Button.operation({
     super.key,
     required this.text,
     this.big = false,
     this.color = operationColor,
+    required this.cb,
   });
 
   @override
@@ -44,7 +48,7 @@ class Button extends StatelessWidget {
             fontWeight: FontWeight.w200,
           ),
         ),
-        onPressed: () {},
+        onPressed: () => cb(text),
       ),
     );
   }
